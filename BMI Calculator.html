@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Caclutor</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            background-color: grey;
+            color: black;
+            display: flex;
+            justify-content: center;
+        }
+        .container{
+                border: 2px solid black;
+                padding: 20px;
+                margin-top: 40px;
+                font-size: 20px;
+                background-color:rgb(141, 197, 212);
+        }
+        button{
+            /* border:  solid black; */
+            border-radius: 10px;
+            background-color: white;
+            font-size: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-top: 20px;
+            /* margin: 10px 122px; */
+
+        }
+        #results{
+            margin: 10px 122px;
+            color:black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BMI Calculator</h1>
+        <form action="">
+        <p>   <label for="age">Age-: </label> 
+            <input type="text" id="age" name="age"> <br> </p> 
+        <p>   <label for="height">Height(cm)-: </label>
+            <input type="text" id="height" name="height"> <br> </p> 
+        <p>    <label for="weight">Weight(kg)-:  </label>
+            <input type="text" id="weight" name="weight"> </p>
+
+        <button>Calculate</button>
+        <div id="results"> </div>
+        <div class="text">
+            <h3>BMI Weight Guide</h3>
+            <h5>Under Weight = Less than 18.6</h5>
+            <h5>Normal Range = 18.6 and 24.9</h5>
+            <h5>Overwieght = Greater than 24.9</h5>
+        </div>
+    </form>
+    </div>
+    
+
+    <script>
+        const form = document.querySelector('form');
+        // const age = parseInt(document.querySelector('#age').value)   // ese humne yahan pr esliye nhi likha kyunki page reload ya load hote hi empty data fill ho jaayega or submit krte wkt empty value aayega 
+
+        form.addEventListener('submit', (e)=>{
+            e.preventDefault()
+
+            // const age = parseInt(document.querySelector('#age').value);
+            // const height = parseInt(document.querySelector('#height').value);
+            // const weight = parseInt(document.querySelector('#weight').value);
+            const age = Number(document.querySelector('#age').value);
+            const height = Number(document.querySelector('#height').value);
+            const weight = Number(document.querySelector('#weight').value);
+            const results = document.querySelector('#results');
+
+            if(age==="" || age < 0 || isNaN(age) ){
+                results.innerHTML=`Please Give a Valid Age ${age}`;
+            } else if(height==="" || height < 0 || isNaN(height) ){
+                results.innerHTML= `Please Give a Valid Height ${height}`;
+            } else if(weight==="" || weight < 0 || isNaN(weight) ){
+                results.innerHTML=`Please Give a Valid Weight ${weight}`;
+            } 
+            
+            const bmi = (weight/((height*height)/10000)).toFixed(2);
+            results.innerHTML= `<span> Your BMI is-: ${bmi} </span>`
+
+
+            if(bmi<18.6 ){
+                results.innerHTML += `<p>You are Under Weight. Please Eat some healthy food</p>`
+            }else if(bmi >= 18.6 && bmi <= 24.9){
+                results.innerHTML += `<p>You Weight is perfect.</p>`
+            }else if(bmi > 24.9){
+                results.innerHTML += `<p>You are Over Weight. Please maintain your Diet</p>`
+            }else{ 
+                results.innerHTML += `<p>Input invalid </p>`
+            }
+        })
+    </script>
+</body>
+</html>
