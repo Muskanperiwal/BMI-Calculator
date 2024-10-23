@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: grey;
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+.container{
+        border: 2px solid black;
+        padding: 20px;
+        margin-top: 40px;
+        font-size: 20px;
+        background-color:rgb(141, 197, 212);
+}
+button{
+    /* border:  solid black; */
+    border-radius: 10px;
+    background-color: white;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px;
+    /* margin: 10px 122px; */
+
+}
+#results{
+    margin: 10px 122px;
+    color:black;
+}
